@@ -1,0 +1,104 @@
+<div>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tela-usuario.component.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+</div>
+<br />
+<div>
+  <mat-icon class="icone-cadastro">home</mat-icon>
+  <h2 class="text-center mb-5">
+    Home
+  </h2>
+</div>
+<div class="container mt-4 fundoPage">
+  <div class="ms-2">
+    <img src="assets/foto1.jpg" class="img_logo mb-3">
+  </div>
+  <form action="" class="row p-2">
+    <div class="div_logo">
+      <button type="submit" (click)="redirect()" class=" btn btn-danger ">Sair</button>
+    </div>
+
+    <div class="container div_evento">
+      <div class="row">
+        <div class="col-md-6 col-sm-4 form-group">
+          <label class="label_form">Referência de Cadastro</label>
+          <input type="text" name="nome" [(ngModel)]="evento.nome" autocomplete="off" class=" form-control"
+            maxlength="30" />
+        </div>
+      </div>
+    </div>
+    <div class="">
+      <button type="button" (click)=" onSave()" class="button_enviar btn btn-primary  mt-4 buttonSwitch">Enviar
+        Cadastro</button>
+    </div>
+  </form>
+  <div>
+    <button (click)="redirectListagem()" type="button"
+      class="label_texto btn btn-primary mt-2 buttonSwitch">Listagem</button>
+  </div>
+  <div class="row justify-content-around">
+    <div class="col">
+    <button (click)="redirectInvite()" type="button" class="label_texto btn btn-primary mt-3 buttonSwitch">Enviar
+      Mensagens</button>
+    </div>
+
+      <div class="col mt-3">
+        <select class="col-6 form-control" type="text" name="userSearch" [(ngModel)]="userSearch">
+          <option value="0">Lista de Usuários Cadastrados</option>
+          <option *ngFor="let competence of usuariosCadastrados">
+              {{ competence.nome }} 
+          </option>
+          
+        </select>
+        <button type="button" class="label_texto_editar btn btn-primary mt-3 buttonSwitch" data-toggle="modal" data-target="#exampleModal">Editar</button>      
+      </div>
+  </div>
+  <div *ngIf="!bloquearUsuario">
+    <div class="btn_create_user">
+      <button (click)="redirectNovoUsuario()"type="button"
+        class="label_texto  btn btn-primary mt-3 buttonSwitch">Cadastrar Usuário
+      </button>
+    </div>
+  </div>
+  <br />
+</div>
+<footer>
+  <div class="mt-5 mb-2 text-center">
+    <p>Copyright©2022™- Todos os direitos reservados.</p>
+  </div>
+</footer>
+ 
+<!-- Modal  de alterar senha foi retirado a pedido do cliente-->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="exampleModalLabel">Alterar Senha</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <label for="">Alterar nome do antigo</label>
+          <input type="text"  id="upnome" name="userSearch" [(ngModel)]="userSearch"  placeholder="Digite um nome novo."  class="form-control" required mask=""><br>
+          <label for="">Alterar nome do Usuário</label>
+          <input type="text"  id="upnome" name="upNome" [(ngModel)]="upNome"  placeholder="Digite um nome novo."  class="form-control" required mask=""><br>
+          <button type="submit"  (click)="listarUsuario();" class="float-right btn btn-primary" >Alterar</button>
+          <button type="button"(click)="clear()" class="btn btn-danger">
+            <span aria-hidden="true">Cancelar</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+

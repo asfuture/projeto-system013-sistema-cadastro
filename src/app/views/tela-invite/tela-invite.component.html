@@ -1,0 +1,95 @@
+<div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tela-invite.component.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script type="text/javascript" src="funcjs.js"></script>
+  </head>
+</div>
+<br>
+<h1 class="text-center">
+  <mat-icon class="icone-cadastro ">mail_outline</mat-icon>
+  <span class="p-3"> Tela de Envio de Mensagem</span>
+</h1>
+<div class="container fundoPage">
+  <div class="ms-3">
+    <button type="submit" (click)="redirect()" class=" btn btn-primary mt-2">HOME</button>
+    <div class="container me-5 row justify-content-end">
+      <img src="assets/foto1.jpg" class="img_logo">
+    </div>
+  </div>
+  <div class=" containter row justify-content-between div_buscar">
+    <div>
+    <button type="button" class=" atualizar btn bg-primary" (click)="atualizar()">Atualizar</button>
+  </div>
+    <div class="col-md-6 ms-3 ">
+    <label>Pesquisar</label>
+    <select class="form-control" type="text" name="cadastro" [(ngModel)]="wathsapp.telefone" (click)="desabilitar_input()" [disabled]="inputSelect">
+      <option value="0">Selecione os contatos</option> 
+      <option *ngFor="let competence of contatos">
+        {{ competence.telefone }} - {{competence.nome}}
+      </option> 
+    </select>
+    <button class="btn1" [disabled]="!wathsapp.telefone ||inputSelect" type="button" (click)="myFunction1();">1º Contato</button>
+    <button class="btn1" [disabled]="!liberar2button ||inputSelect" type="button" (click)="myFunction2();">2º Contato</button>
+    <button class="btn1" [disabled]="!liberar2button ||inputSelect" type="button" (click)="myFunction2();">3º Contato</button>
+    <button class="btn1" [disabled]="!liberar2button ||inputSelect" type="button" (click)="myFunction2();">4º Contato</button>
+    <button class="btn1" [disabled]="!liberar2button ||inputSelect " type="button" (click)="myFunction2();">5º Contato</button>
+    </div>
+    <div class="col-md-3">
+      <label for="">Telefone</label>
+      <input type="text" class="form-control" [disabled]="inputFone" [(ngModel)]="wathsapp.telefone" maxlength="14">
+
+      <button class="btn1" type="button" [disabled]="inputFone" (click)="desabilitar_seletor()"  (click)="myFunction1();">Contato</button>
+    </div>
+  </div>
+  <br>
+  <div class="container row justify-content-between ">
+    <div class="col">
+      <h4>Selecione 5 contatos</h4>
+      <table class="bg-white text-dark">
+        <thead>
+          <tr class="text-center m-2">
+            <th>Nome</th>
+          </tr>
+        </thead>
+        <tbody class="table">
+          <tr class="corTextoPlanilha">
+            <ol id="myList1"></ol>
+            <ol id="myList2"></ol>
+          </tr>
+        </tbody>
+      </table>
+      <br/>
+      <span style="color: yellow;">ATENÇÃO: ENVIAR MENSAGEM, APÓS FAZER LEITURA DO QR CODE.</span>
+      <div id="app">
+        <img src="" alt="QR Code" id="qrcode">
+        <h3>Logs:</h3>
+        <ul class="logs"></ul>
+      </div>
+    </div>
+    <form class="col">
+      <label for="">Texto</label><br>
+      <textarea name="mensagem" id="" type="mensagem" [(ngModel)]="wathsapp.mensagem" cols="60"
+        rows="10"></textarea><br>
+        <div class="container mt-4 mb-5 ">
+          <div class="row justify-content-between">
+             <button type="button" [disabled]="!wathsapp.telefone || !wathsapp.mensagem" (click)="clearMessage()"
+          class=" col-sm-3 btn  btn-danger">Cancelar</button>
+            <button type="button" [disabled]="!wathsapp.telefone || !wathsapp.mensagem" (click)="onSave()"
+          class="col-sm-3 btn bg-success btn_enviar">Enviar</button>
+      </div>
+    </div>
+    </form>
+  </div>
+</div>
+
+  <footer>
+    <div class="mt-5 mb-2 text-center">
+      <p>Copyright©2022™- By Todos os direitos reservados.</p>
+    </div>
+  </footer>

@@ -1,0 +1,18 @@
+.fundoPage{
+  color: #e6e4e9!important;
+  background-color: #282c80!important;
+  border-radius: 2%;
+}
+
+.buttonSwitch{
+  background-color: #ddf3f2ec!important;
+  color: black;
+  border-radius: 4%;
+}
+
+.logo {
+  width: 7%;
+}
+.icone-cadastro{
+  font-size: 35px;
+}

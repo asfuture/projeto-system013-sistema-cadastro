@@ -1,0 +1,30 @@
+.fundoPage{
+  color: #e6e4e9!important;
+  background-color: #282c80!important;
+  border-radius: 2%;
+}
+.icone-cadastro{
+  font-size: 40px;
+}
+.img_logo{
+  width:120px;
+  height:90px;
+  position: relative;
+  top:-38px;
+  right: 30px;
+}
+.div_buscar{
+  width: 95.8%;
+}
+.btn1{
+  margin: 2.4px;
+}
+.btn_enviar {
+  position: relative;
+  right: 30px;
+}
+.atualizar{
+ width: 150px;
+ position: relative;
+  left: 355px;
+}

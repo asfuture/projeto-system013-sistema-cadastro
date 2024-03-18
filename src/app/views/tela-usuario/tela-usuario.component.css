@@ -1,0 +1,64 @@
+.fundoPage{
+  color: #e6e4e9!important;
+  background-color: #1F3873!important;
+  border-radius: 2%;
+}
+
+.buttonSwitch{
+  background-color: #ddf3f2ec!important;
+  color: black;
+  border-radius: 4%;
+}
+.btn_create_user{
+  position: relative;
+  top: -54px;
+}
+
+.logo {
+  width: 9%;
+}
+.div_logo{
+  width: 100%;
+  text-align: right;
+  position: relative;
+  top: -107px;
+}
+.img_logo{
+  width:80px;
+  height:90px;
+  position: relative;
+  top: 6px;
+}
+.label_form{
+  width: 200px;
+  font-size: 16px;
+  position: relative;
+  left: 8px;
+}
+.button_enviar{
+  width: 200px;
+  font-size: 16px;
+  position: relative;
+  left: 3px;
+}
+.label_texto{
+  width: 200px;
+  font-size: 16px;
+  position: relative;
+  left: 8px;
+}
+.icone-cadastro{
+  font-size: 40px;
+  position: relative;
+  float: left;
+  left: 480px;
+}
+@media only screen and (max-width: 600px) {
+  .div_logo{
+    text-align: center;
+  }
+  .label_texto{
+    font-size: 13px;
+  }
+
+}

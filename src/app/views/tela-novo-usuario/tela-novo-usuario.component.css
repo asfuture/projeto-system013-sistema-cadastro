@@ -1,0 +1,23 @@
+.logo {
+  width: 7%;
+}
+
+.fundoPage{
+  color: #e6e4e9!important;
+  background-color: #282c80!important;
+  border-radius: 2%;
+}
+.img_logo{
+  width:125px;
+  height:90px;
+  /*background-color: rgb(161, 46, 46);*/
+  position: relative;
+  top:-53px;
+}
+.btn_home{
+  position: relative;
+  left:13px;
+}
+.icone-cadastro{
+  font-size: 40px;
+}

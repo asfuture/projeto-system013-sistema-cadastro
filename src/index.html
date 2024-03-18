@@ -1,0 +1,76 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>SISTEMA DE CADASTRO</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="google-signin-client_id"
+    content="538417047994-q7v4uai5l4nm2g409bv0qb4i2pf5ol91.apps.googleusercontent.com">
+
+
+  <script src="https://apis.google.com/js/platform.js?onload=onLoadCallback" async defer></script>
+
+  <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+
+  <script src="https://unpkg.com/jwt-decode/build/jwt-decode.js"></script>
+</head>
+
+<body>
+
+  <app-root></app-root>
+  <script>
+    window.onLoadCallback = function(){
+      gapi.auth2.init({
+          client_id: 'filler_text_for_client_id.apps.googleusercontent.com'
+        });
+    }
+
+    function testeF(){
+      current = 'dados_pessoais'
+    }
+
+    </script>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.1/css/all.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.3.0/socket.io.js" crossorigin="anonymous"></script>
+  <script>
+    $(document).ready(function () {
+      //var socket = io('http://localhost:8000', { transports: ['websocket'] });
+
+      var socket = io('https://sistema-cadastro-front.herokuapp.com', { transports: ['websocket'] });
+
+      socket.on('message', function (msg) {
+        $('.logs').append($('<li>').text(msg));
+      });
+
+      socket.on('qr', function (src) {
+        $('#qrcode').attr('src', src);
+        $('#qrcode').show();
+      });
+
+      socket.on('ready', function (data) {
+        $('#qrcode').hide();
+      });
+
+      socket.on('authenticated', function (data) {
+        $('#qrcode').hide();
+      });
+    });
+  </script>
+</body>
+
+</html>

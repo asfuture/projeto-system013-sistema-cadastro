@@ -1,0 +1,108 @@
+*{
+  padding: 0px;
+  margin: 0px;
+}
+.fundoPage{
+  color: #e6e4e9!important;
+  background-color: #282c80!important;
+  border-radius: 2%;
+}
+.buttonSwitch{
+  background-color: #ddf3f2ec!important;
+  border-radius: 4%;
+}
+.positionButton{
+  align-items: center;
+}
+.labelButton{
+  align-items: center;
+}
+.corTextoPlanilha{
+  color: #e6e4e9!important;
+  border-radius: 4%;
+  font-size: 20px;
+}
+.fonte-size{
+  font-size: 20px;
+}
+.inputText {
+  border-radius:5px;
+}
+.logo {
+  width: 7%;
+}
+.img_logo{
+  width:80px;
+  height:70px;
+ /* background-color: rgb(161, 46, 46) ;*/
+  position: relative;
+  top: 800;
+  left: 6px;
+}
+.img_logo_google{
+  width:120px;
+  height:40px;
+ /* background-color: rgb(161, 46, 46) ;*/
+  position: relative;
+  top: 800;
+  left: 6px;
+}
+.div_login{
+  position: relative;
+  left: 9px;
+}
+.link_cor{
+  color: white;
+}
+.icon_google{
+width: 25px;
+padding-right: 7px;
+}
+.checkbox_termo{
+  min-width: 25px;
+  min-height: 35px;
+  position: relative;
+  top: 13px;
+}
+.icone-cadastro{
+  font-size: 35px;
+}
+.botao {
+  width: 100%;
+}
+.gap_input{
+  margin-bottom: 60px;
+}
+.btn_volta_finalizar{
+  position: relative;
+  right: 30px;
+
+}
+.icone-cadastro{
+  font-size: 40px;
+  position: relative;
+  float: left;
+  left: 458px;
+}
+@media screen and (max-width: 760px) {
+  h2{
+    font-size: 30px;
+  }
+  .icone-cadastro{
+    font-size: 33px;
+  }
+  .gap_input{
+    margin-bottom: 26px;
+  }
+  .btn_volta_finalizar{
+    margin-top: 10px;
+
+  }
+  .corTextoPlanilha{
+
+    font-size: 18px;
+  }
+  .fonte-size{
+    font-size: 18px;
+  }
+}

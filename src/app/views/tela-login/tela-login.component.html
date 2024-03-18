@@ -1,0 +1,72 @@
+<div>
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tela-login.component.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+  </head>
+</div>
+<br>
+<div>
+  <h2 class="text-center mb-5">
+    <mat-icon class="icone-cadastro"> person_pin</mat-icon>
+    <span class="p-4">Faça o seu Login</span>
+  </h2>
+</div>
+
+<div class="container mt-5 fundoPage">
+  <form action="" class="row m-5 p-5 text-center">
+
+    <div class="">
+      <label for="" class="mt-5 form-label">Login</label><br><input name="nome" [(ngModel)]="user.nome" type="text"
+        style="border-radius:5px;" class=" text-center col-sm-4 col-md-4 col-lg-4 m-2" required><br>
+      <label for="" class="mt-4 form-label">Senha</label><br><input name="senha" [(ngModel)]="user.senha"
+        type="password" style="border-radius:5px;" class="text-center col-sm-4 col-md-4 col-lg-4 m-2" required
+        mask="AAAAA">
+    </div>
+    <!-- Retirado
+    <div class="text-center">
+      <a href="" data-toggle="modal" data-target="#exampleModal"><label for="">Esqueceu a senha?</label></a>
+    </div>
+      -->
+    <div class="text-center">
+      <button type="submit" (click)="verificarSenha()" class=" btn btn-primary mt-5">Enter</button>
+    </div>
+  </form>
+</div>
+<!-- Modal  de alterar senha foi retirado a pedido do cliente
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header ">
+        <h5 class="modal-title" id="exampleModalLabel">Alterar Senha</h5>
+        <button type="button"(click)="clear()" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form action="">
+          <input type="text" placeholder="Digite o seu email" class="form-control" required name="upEmail"
+            [(ngModel)]="upEmail"><br>
+          <label for="">Crie uma nova senha com 4 Digitos usando Letras e números.</label>
+          <input type="password"  id="upSenha" name="upSenha" [(ngModel)]="upSenha"  placeholder="Digite uma senha nova"  class="form-control" required mask=""><br>
+          <label for="">Confirme sua senha.</label>
+          <input type="password"  name="upConfirma" [(ngModel)]="upConfirma"  placeholder="Digite sua senha nova aqui."  class="form-control" required mask="AAAA"><br>
+          <button type="submit" (click)="update_key()" class="float-right btn btn-primary" [disabled]="!upEmail ||!upSenha || !upConfirma">Salva</button>
+          <button type="button"(click)="clear()" class="btn btn-danger">
+            <span aria-hidden="true">Cancelar</span>
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+<footer>
+  <div class="mt-5 mb-2 text-center">
+    <p>Copyright©2022™- By Todos os direitos reservados.</p>
+  </div>
+</footer>

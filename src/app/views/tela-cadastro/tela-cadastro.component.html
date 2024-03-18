@@ -1,0 +1,298 @@
+<div>
+  <div>
+  <div>
+    <head onload="myFunction();udpate();" >
+        <meta charset="UTF-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Document</title>
+        <link rel="stylesheet" href="tela-cadastro.component.css">
+        
+    </head>
+  </div>
+  <br />
+  <div>
+    <mat-icon class="icone-cadastro">library_books</mat-icon>
+    <h2 class="text-center mb-5">
+       Cadastro
+    </h2>
+  </div>
+  <div class="fundoPage">
+        <div>
+             <img src="assets/Logomarca_PDT1.jpg" class=" m-2 img_logo">
+        </div>
+      <div>
+        <br/>
+        <form #f="ngForm" class="fonte-size">
+          <div>
+            <div [ngSwitch]="currentStep">
+              <div *ngSwitchCase="'termo'">
+                <div class="white-box col-md-12">
+                  <div class="container">
+
+                      <div class="text-center">
+                        <div id="termo_politica" class="mt-5 fs-5">
+
+                          <input type="checkbox" (click)="redirectProxPage()"  name="termo_politica" [(ngModel)]="cadastro.termo_politica" class="checkbox_termo m-1">
+
+                          <button type="button"  name="button_termo" class="btn btn-primary corTextoPlanilha " data-toggle="modal" data-target="#exampleModal">Aceita Termo de Autorização</button>
+                        </div>
+                        <div id="termo_politica" class="div_login mt-5 fs-5">
+                          <label>Login com google - </label>
+                          <button (click)=" googleLogin()"   class="btn g-signin2" data-onsuccess="onSignIn"><img src="assets/google.jpeg" class="mt-1 img_logo_google"></button>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                  <hr>
+                  <div class="col-md-12 text-left buttonRow" >
+                    <div  class="btn-group botao" role="presentation">
+                        <button  class="btn btn-outline "(click)="redirectUser()">
+                          <label *ngIf="permission" class="btn btn-success corTextoPlanilha">
+                            Anterior
+                          </label>
+                        </button>
+
+                        <button class="btn btn-default btn-outline"  (click)="currentStep = 'dados_pessoais'">
+                            <label  class="btn btn-success corTextoPlanilha">Próximo</label>
+                            <i class="glyphicon glyphicon-menu-right"></i>
+                        </button>
+                    </div>
+                </div>
+              </div>
+            </div>
+
+              <div *ngSwitchCase="'dados_pessoais'">
+                <div class="white-box col-md-12">
+                  <div class="container">
+                      <div class="text-center">
+                        <div class="mt-5 fs-5 form-group" >
+
+                          <label><span style="color:red;">*</span> Nome:</label>
+
+                          <input type="text" name="nome" id="fullName" [(ngModel)]="cadastro.nome" autocomplete="off"
+                              class="form-control" placeholder="Digite o seu Nome" maxlength="40" [textMask]="{mask: verifyletra, guide: false}"/>
+                        </div>
+                        <div class="mt-5 fs-5 form-group" >
+                          <label for="email"><span style="color:red;">*</span> E-mail:</label>
+                          <input type="email" id="email" required name="email" [(ngModel)]="cadastro.email" autocomplete="off"
+                              class="form-control" placeholder="Nome o seu E-mail" maxlength="40"  [textMask]="{mask: verifyNameMask, guide: false}"/>
+                        </div>
+                      </div>
+                    <br/>
+                  </div>
+                </div>
+                <div class="row">
+                  <hr>
+                  <div class="col-md-12 text-left buttonRow" >
+                      <div  class="btn-group botao" role="presentation">
+                          <button class="btn btn-outline "(click)="currentStep = 'termo'">
+                            <label  class="btn btn-success corTextoPlanilha">
+                              Anterior
+                            </label>
+                          </button>
+
+                          <button class="btn btn-default btn-outline" (click)="currentStep = 'dados_pessoais2'"
+                          [disabled]="!cadastro.nome || !cadastro.email"  >
+                              <label  class="btn btn-success corTextoPlanilha">Próximo</label>
+                              <i class="glyphicon glyphicon-menu-right"></i>
+                          </button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngSwitchCase="'dados_pessoais2'">
+                <div class="white-box col-md-12">
+                  <div class="container">
+                      <div class="text-center">
+                        <div class="mt-5 fs-5 form-group" >
+                          <label><span style="color:red;">*</span> Selecione o seu genero:</label>
+                            <select class="form-control" for="selecione" name="genero" [(ngModel)]="cadastro.genero">
+                              <option value="Masculino">Masculino</option>
+                              <option value="Femenino">Feminino</option>
+                              <option value="Outros">Outros</option>
+                            </select>
+                          </div>
+                          <div class="mt-5 fs-5 form-group" >
+                            <label for="dataNasc"><span style="color:red;">*</span> Data de Nascimento:</label>
+                          <input type="text" name="dataNasc" required [(ngModel)]="cadastro.dataNasc" autocomplete="off"
+                              class="form-control"  mask="d0/M0/0000" [showMaskTyped]="true"/>
+                        </div>
+                      </div>
+                    <br/>
+                  </div>
+                </div>
+                <div class="row">
+                  <hr>
+                  <div class="col-md-12 text-left buttonRow" >
+                      <div  class="btn-group botao" role="presentation">
+                          <button class="btn btn-outline "(click)="currentStep = 'dados_pessoais'">
+                            <label  class="btn btn-success corTextoPlanilha">
+                              Anterior
+                            </label>
+                          </button>
+
+                          <button class="btn btn-default btn-outline" (click)="currentStep = 'cep'"
+                          [disabled]="!cadastro.genero || !cadastro.dataNasc"  >
+                              <label  class="btn btn-success corTextoPlanilha">Próximo</label>
+                              <i class="glyphicon glyphicon-menu-right"></i>
+                          </button>
+                      </div>
+                  </div>
+                </div>
+              </div>
+              <div *ngSwitchCase="'cep'">
+                <div class="white-box col-md-12">
+                  <div class="container">
+                      <div class="row">
+                        <div class="col-md-6 form-group" >
+                          <label>Cep :</label>
+                          <input type="text" name="cep" [(ngModel)]="cadastro.cep" autocomplete="off"class="form-control" mask="00000-000" [showMaskTyped]="true"
+                              id="cep" name="cep" ngModel #cep="ngModel" (blur)="consultaCep(cep.value,f)"
+                              />
+                              <a href="https://buscacepinter.correios.com.br/app/localidade_logradouro/index.php" target="_blank" class="link_cor">Não sei o cep</a>
+                        </div>
+                        <div class="col-md-6 form-group" >
+                          <label><span style="color:red;">*</span> Rua:</label>
+                          <input type="text" name="rua" [(ngModel)]="cadastro.rua" autocomplete="off" [textMask]="{mask: verifyNameMask, guide: false}"
+                              class="form-control" placeholder="Nome da rua"
+                              id="logradouro" ngModel #logradouro="ngModel" />
+                        </div>
+                      </div>
+                      <br/>
+                      <div class="row">
+                        <div class="col-md-6 form-group" >
+                          <label><span style="color:red;">*</span> Bairro:</label>
+                          <input type="text" name="bairro" id="family_name" [(ngModel)]="cadastro.bairro" autocomplete="off"
+                            class="form-control" placeholder="Nome do Bairro" [textMask]="{mask: verifyletra, guide: false}"
+                            id="bairro" ngModel #bairro="ngModel"
+                            />
+                        </div>
+                        <div class="col-md-6 form-group" >
+                          <label><span style="color:red;">*</span> Cidade:</label>
+                          <input type="text" name="cidade" [(ngModel)]="cadastro.cidade" autocomplete="off" [textMask]="{mask: verifyletra, guide: false}"
+                            class="form-control" placeholder="Nome da cidade"
+                            id="cidade" ngModel #cidade="ngModel"
+                            />
+                        </div>
+                      </div>
+                  </div>
+                </div>
+                <br/>
+
+                <div class="row">
+                  <hr>
+                  <div class="col-md-12 text-left " >
+                      <div class="btn-group botao" role="presentation">
+                          <button class="btn btn-outline "(click)="currentStep = 'dados_pessoais'">
+                              <label  class="btn btn-success corTextoPlanilha">
+                                Anterior
+                              </label>
+                          </button>
+
+                          <button class="btn btn-default btn-outline" [disabled]="!cadastro.rua ||!cadastro.bairro ||!cadastro.cidade" (click)="currentStep = 'telefone'">
+                            <label  class="btn btn-success corTextoPlanilha ">Próximo</label>
+                            <i class="glyphicon glyphicon-menu-right"></i>
+                        </button>
+                      </div>
+                  </div>
+              </div>
+            </div>
+
+              <div *ngSwitchCase="'telefone'">
+                <div class="white-box col-md-12">
+                  <div class="container">
+                      <div>
+
+                        <div class=" text-center" >
+
+                          <label class="fonte-size"><span style="color:red;">*</span> Telefone:</label><br>
+
+                          <input type="text" name="telefone" [(ngModel)]="cadastro.telefone" autocomplete="off"
+                              class=" col-sm-3 col-md-2 mt-2 text-center" prefix="+55" mask="(00)00000-0000" [showMaskTyped]="true" style="padding:5px;border-radius: 5px;"(keyup)="keyFunc($event)"/>
+                        </div>
+                      </div>
+
+                      <div class="text-center" >
+                        <a (click)="onSave()" href="https://wa.me/{{telefoneWaths}}?text=Olá%20Desejo%20Receber.%20Informações!">
+                          <button  class="col-5 btn btn-primary m-5 corTextoPlanilha" *ngIf="input_telefone " type="button" id="botao_telefone" [disabled]="!cadastro.telefone"> Finalizar</button>
+                        </a>
+                      </div>
+                      <button class="btn btn_volta_finalizar" (click)="currentStep = 'cep'">
+                        <label  class="btn btn-success corTextoPlanilha">Anterior</label>
+                      </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="login == true" >
+            <section id="wrapper" class="login-register invoice__section page-completed-register">
+                <div class="invoice__content page-completed-content">
+                    <div class="invoice__wrapper page-completed-wrapper-invoice">
+                        <div  class="form-horizontal form-material" style="text-align: center;" >
+                            <h1>OBRIGADO!!</h1>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+        </form>
+      </div>
+      <br>
+    </div>
+</div>
+
+<footer>
+  <div class="mt-5 mb-2 text-center">
+    <p>Copyright©2022™ - Todos os direitos reservados.</p>
+  </div>
+</footer>
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel " aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="text-center m-2">
+      <h6 class="modal-title " id="exampleModalLabel">TERMO DE ACEITE PARA TRATAMENTO DE DADOS PESSOAIS</h6>
+      </div>
+      <div class="modal-body border-top border-bottom border-dark">
+        <p class=" text-justify">Este documento visa registrar a manifestação livre, informada e inequívoca pela qual o usuário concorda com o tratamento de seus dados pessoais para finalidade específica, em conformidade com a Lei nº 13.709 – Lei Geral de Proteção de Dados Pessoais (LGPD).
+          Ao aceitar o presente termo, o usuário consente e concorda que Pdt, CNPJ nº 01.433.710/0001-78, endereço Rua Jacob Emmerich 121 apto 31, Centro, São Vicente – doravante denominada Controlador, tome decisões referentes ao tratamento de seus dados pessoais, bem como realize o tratamento de seus dados pessoais, envolvendo operações como as que se referem a coleta, produção, recepção, classificação, utilização, acesso, reprodução, transmissão, distribuição, processamento, arquivamento, armazenamento, eliminação, avaliação ou controle da informação, modificação, comunicação, transferência, difusão ou extração.
+          Dados Pessoais
+          O Controlador fica autorizado a tomar decisões referentes ao tratamento e a realizar o tratamento dos seguintes dados pessoais do Titular:
+          •	Nome completo
+          •	Gênero
+          •	Cidade, bairro e rua de moradia
+          •	Endereço de e-mail pessoal
+          •	Telefone de whatsapp
+          Finalidades do Tratamento dos Dados
+          O tratamento dos dados pessoais listados neste termo tem as seguintes finalidades:
+          •	Possibilitar que o Controlador identifique e entre em contato com o Titular para fins de relacionamento e pedido de novos dados para fins de pesquisa entre outras.
+          Compartilhamento de Dados
+          O Controlador fica autorizado a compartilhar os dados pessoais do Titular com outros agentes de tratamento de dados, caso seja necessário para as finalidades listadas neste termo, observados os princípios e as garantias estabelecidas pela Lei nº 13.709.
+          Segurança dos Dados
+          O Controlador responsabiliza-se pela manutenção de medidas de segurança, técnicas e administrativas aptas a proteger os dados pessoais de acessos não autorizados e de situações acidentais ou ilícitas de destruição, perda, alteração, comunicação ou qualquer forma de tratamento inadequado ou ilícito.
+          Em conformidade ao art. 48 da Lei nº 13.709, o Controlador comunicará ao Titular e à Autoridade Nacional de Proteção de Dados (ANPD) a ocorrência de incidente de segurança que possa acarretar risco ou dano relevante ao Titular.
+          Término do Tratamento dos Dados
+          O Controlador poderá manter e tratar os dados pessoais do Titular durante todo o período em que os mesmos forem pertinentes ao alcance das finalidades de pré-campanha e campanha eleitoral. Dados pessoais anonimizados, sem possibilidade de associação ao indivíduo, poderão ser mantidos por período indefinido.
+          O Titular poderá solicitar via e-mail ou correspondência ao Controlador, a qualquer momento, que sejam eliminados os dados pessoais não anonimizados do Titular
+          Direitos do Titular
+          O Titular tem direito a obter do Controlador, em relação aos dados por ele tratados, a qualquer momento e mediante requisição: I - confirmação da existência de tratamento; II - acesso aos dados; III - correção de dados incompletos, inexatos ou desatualizados; IV - anonimização, bloqueio ou eliminação de dados desnecessários, excessivos ou tratados em desconformidade com o disposto na Lei nº 13.709; V - portabilidade dos dados a outro fornecedor de serviço ou produto, mediante requisição expressa, de acordo com a regulamentação da autoridade nacional, observados os segredos comercial e industrial; VI - eliminação dos dados pessoais tratados com o consentimento do titular, exceto nas hipóteses previstas no art. 16 da Lei nº 13.709; VII - informação das entidades públicas e privadas com as quais o controlador realizou uso compartilhado de dados; VIII - informação sobre a possibilidade de não fornecer consentimento e sobre as consequências da negativa; IX - revogação do consentimento, nos termos do § 5º do art. 8º da Lei nº 13.709.
+          Direito de Revogação do Consentimento
+          Este consentimento poderá ser revogado pelo usuário, a qualquer momento, mediante solicitação via e-mail ou correspondência ao Controlador.
+           </p>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary p-2" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

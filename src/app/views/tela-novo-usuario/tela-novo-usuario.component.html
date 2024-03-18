@@ -1,0 +1,97 @@
+<div>
+
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tela-novo-usuario.component.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"></script>
+
+  </head>
+</div>
+<br />
+<div>
+  <h2 class="text-center mb-5">
+    <mat-icon class="icone-cadastro">person_add</mat-icon>
+    <span class="p-4">Novo Usuário</span>
+  </h2>
+</div>
+
+<div class="container-fluid mt-5 fundoPage">
+  <div class="btn_home ">
+    <button type="submit" (click)="redirect()" class=" btn btn-primary mt-2">HOME</button>
+  </div>
+  <form action="" class="row p-3 ">
+    <div class="container me-5 row justify-content-end">
+        <img src="assets/foto1.jpg" class="img_logo">
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Nome<span style="color:red;">*</span>:</label>
+
+        <input type="text" name="nome" [(ngModel)]="usuario.nome" autocomplete="off" class="form-control"
+          placeholder="Digite o seu Nome" maxlength="30" [textMask]="{mask: verifyletra, guide: false}" />
+      </div>
+      <div class="col-md-6 form-group">
+        <label>E-mail<span style="color:red;">*</span>:</label>
+        <input type="email" id="email" name="email" [(ngModel)]="usuario.email" autocomplete="off" class="form-control"
+          placeholder="Nome o seu E-mail" maxlength="30" required [textMask]="{mask: verifyNameMask, guide: false}" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Senha<span style="color:red;">*</span>:</label>
+
+        <input type="text" name="senha" [(ngModel)]="usuario.senha" autocomplete="off" class="form-control"
+          mask="AAAA" [showMaskTyped]="false" />
+        <span>Crie uma senha com 4 Digitos usando Letras e números.</span>
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Confirmar senha<span style="color:red;">*</span>:</label>
+        <input type="text" name="confirmarSenha" [(ngModel)]="senhaC" autocomplete="off"
+          class="form-control" mask="AAAA" [showMaskTyped]="false" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Cidade<span style="color:red;">*</span>:</label>
+        <input type="text" name="cidade" [(ngModel)]="usuario.cidade" autocomplete="off" class="form-control" [textMask]="{mask: verifyletra, guide: false}" />
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Bairro<span style="color:red;">*</span>:</label>
+        <input type="text" name="bairro" [(ngModel)]="usuario.bairro" autocomplete="off" class="form-control" />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6 form-group">
+        <label>Tipo do usuário<span style="color:red;">*</span>:</label>
+        <select class="form-control" for="selecione" name="tipo" [(ngModel)]="usuario.tipo">
+          <option value="master">Master</option>
+          <option value="especial">Especial</option>
+          <option value="comum">Comum</option>
+        </select>
+      </div>
+      <div class="col-md-6 form-group">
+        <label>Telefone<span style="color:red;">*</span>:</label>
+        <input type="text" id="telefone" name="telefone" [(ngModel)]="usuario.telefone" autocomplete="off" prefix="+55"  mask="(00)00000-0000" [showMaskTyped]="true"
+          class="form-control" placeholder="Numero do telefone" />
+      </div>
+    </div>
+
+    <div class="row justify-content-around">
+      <button (click)="onSave()"
+        [disabled]="!usuario.nome || !usuario.email || !usuario.senha || !usuario.cidade || !usuario.bairro || !usuario.telefone"
+        name="cadastrar" type="button" class="col-3 btn btn-primary mt-5">Cadastrar
+        Usuário</button>
+
+      <button (click)="clear()" type="button" class="col-3 btn btn-danger mt-5">Cancelar Cadastro</button>
+    </div>
+  </form>
+</div>
+<footer>
+  <div class="mt-5 mb-2 text-center">
+    <p>Copyright©2022™ - Todos os direitos reservados.</p>
+  </div>
+</footer>
